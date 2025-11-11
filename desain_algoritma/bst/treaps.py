@@ -8,8 +8,8 @@ class TreapNode:
         self.right = None
 
     def __str__(self):
-        # Short, readable label used by the ASCII printer
-        return f"{self.key}(p={self.priority})"
+        # Short, readable label used by the ASCII printer in format (key|priority)
+        return f"({self.key}|{self.priority})"
 
     def left_rotation(self):
         new_root = self.right
@@ -101,7 +101,7 @@ def _build_lines(node):
     if left_w == 0 and right_w == 0:
         return [label], label_w, 1, label_w // 2
 
-    gap = 2  # spacing between subtrees
+    gap = 2 # spacing between subtrees (wider gap for clearer (k|p) labels)
     # Ensure total width can at least contain the label itself to avoid overflow
     total_w = max(left_w + gap + right_w, label_w)
     label_start = max(0, left_w + gap // 2 - label_w // 2)
