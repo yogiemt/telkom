@@ -1,0 +1,29 @@
+a. as we know, our program has time complexity O (n^2), to simplify, if our data able to process n=2 data in 2 s, means that our program able to process 0.5 s per data. if we increase the data to 4, it will took about 8s. so let's back to problem, preliminary experiment shows that using n=1K, what if we increase to 5K. 
+T(1k) = 1000^2 => 1000_000 --> 2 s to process these much of execution's process.
+
+T(5k) = 5000^2 => 25_000_000 -> we can divide by first statement, 25_000_000 / 1000_000  = 25 * 2 = 50s
+
+as conclusion, it will took approximately 50s, if the data size is increased to 5k
+
+
+
+b. if the computer upgrades, means it will took only 1s to process n=1k, lets calculate again. 
+
+T(1k) = 1000*2 = 1000_000 --> 1 s
+
+T(5k) = 5000^2 = 25_000_000 -> 25_000_000  / 1000_000  = 25 * 1 = 25s.
+
+it will took 25s if the computers is upgraded  to an 2 times faster computer.
+
+
+
+c. if the allocated time only 16s
+
+16 = n^2 / 1000_000
+
+n^2= 16_000_000
+
+n = 4000 --> it will be processed 4000 data in 16s
+
+
+

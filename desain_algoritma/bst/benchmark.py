@@ -9,7 +9,7 @@ from read_black import RedBlackTree
 
 def benchmark_treap_operations():
     # data = [10, 100, 1000]
-    data = [10, 100, 1000, 10000, 100000, 1000000, 10000000]
+    data = [10, 100, 1000, 10000, 100000, 1000000, 10_000_000]
     time_results = {
         "treaps" : [],
         "two_three": [],
