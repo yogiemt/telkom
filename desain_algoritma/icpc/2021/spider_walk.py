@@ -19,9 +19,9 @@ class SlopeRing:
             half: 0,
             half_next: -1,
         }
-        print("Initial slopes:", self.m)
+        # print("Initial slopes:", self.m)
         self.keys = sorted(self.m)
-        print("Initial keys dari slopes:", self.keys)
+        # print("Initial keys dari slopes:", self.keys)
 
     # --- Manajemen keys terpusat ---
     # time: O(log K +  K)
@@ -55,7 +55,7 @@ class SlopeRing:
     # time: O(log K)
     def pred_of_upper_bound(self, x):
         """Indeks dari kunci terakhir yang <= x (cyclic)."""
-        ub = bisect.bisect_right(self.keys, x)
+        ub = bisect.bisect_right(self.keys, x) 
         return (ub - 1) % len(self.keys)
 
     # get neighbors of breakpoint x
@@ -83,16 +83,14 @@ class SlopeRing:
 
     # --- Set slope dengan penggabungan breakpoint redundant ---
     def set_slope(self, x, d):
-        print("self.m", self.m)
-        print("self.keys", self.keys)
+        # print("self.m", self.m)
+        # print("self.keys", self.keys)
         pit, it, nit = self.get_neighbors(x)
-        print(f"set_slope({x}, {d}): pit={self.keys[pit]}, it={self.keys[it]}, nit={self.keys[nit]}")
+        # print(f"set_slope({x}, {d}): pit={self.keys[pit]}, it={self.keys[it]}, nit={self.keys[nit]}")
         xd = self.m[self.keys[it]]
         pd = self.m[self.keys[pit]]
         nd = self.m[self.keys[nit]]
-        print(f"  slopes: pd={pd}, xd={xd}, nd={nd}")
-        print()
-        print()
+        # print(f"  slopes: pd={pd}, xd={xd}, nd={nd}")
 
         if xd == d:
             return
@@ -226,7 +224,6 @@ def solve_case(N, M, S, bridges):
     # time O(M log K)
     for _, t in bridges:
         ring.apply_swap(t)
-        print(f"After swap at {t}: keys={ring.keys}, slopes={ring.m}")
         # pergerakan cursor s mengikuti swap t & t+1
         if s == t:
             s = (s + 1) % N
@@ -234,7 +231,6 @@ def solve_case(N, M, S, bridges):
             s = t
 
 
-    print("Final slopes:", ring.m)
     # Rekonstruksi hasil dengan integrasi slope sepanjang ring
     ret = [0] * N
     cur = 0
@@ -244,8 +240,7 @@ def solve_case(N, M, S, bridges):
         if s in ring.m:
             d = ring.m[s] # slope di posisi s
         cur += d
-        s = (s + 1) % N
-        print("ret", ret)
+        s = (s + 1) % N    
 
     # Kembalikan sebagai list of str (sesuai format print baris per nilai)
     return list(map(str, ret))
